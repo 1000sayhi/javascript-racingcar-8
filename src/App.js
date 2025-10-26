@@ -8,10 +8,11 @@ class App {
     const names = parseNames(namesInput);
     validateNames(names);
 
-    const tryCountInput = await Console.readLineAsync(
-      "시도할 횟수는 몇 회인가요?\n"
-    );
+    const tryCountInput = await Console.readLineAsync("시도할 횟수는 몇 회인가요?\n");
     const tryCount = parseTryCount(tryCountInput);
+
+    Console.print("\n실행 결과");
+    const cars = createCars(names);
 
   }
 }
@@ -37,6 +38,10 @@ function parseTryCount(input) {
   if (!Number.isInteger(n) || n <= 0)
     throw new Error("[ERROR] 시도 횟수는 양의 정수여야 합니다.");
   return n;
+}
+
+function createCars(names) {
+  return names.map((name) => ({ name, position: 0 }));
 }
 
 export default App;
