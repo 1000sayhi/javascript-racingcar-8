@@ -1,4 +1,4 @@
-import { Console } from "@woowacourse/mission-utils";
+import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   async run() {
@@ -42,6 +42,16 @@ function parseTryCount(input) {
 
 function createCars(names) {
   return names.map((name) => ({ name, position: 0 }));
+}
+
+function advanceOrNot() {
+  return Random.pickNumberInRange(0, 9) >= 4;
+}
+
+function advanceOnce(cars) {
+  cars.forEach((car) => {
+    if (advanceOrNot()) car.position += 1;
+  });
 }
 
 export default App;
