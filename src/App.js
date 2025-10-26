@@ -14,6 +14,12 @@ class App {
     Console.print("\n실행 결과");
     const cars = createCars(names);
 
+    for (let i = 0; i < tryCount; i += 1) {
+      advanceOnce(cars);
+      printHyphen(cars);
+      Console.print("");
+    }
+
   }
 }
 
@@ -51,6 +57,12 @@ function advanceOrNot() {
 function advanceOnce(cars) {
   cars.forEach((car) => {
     if (advanceOrNot()) car.position += 1;
+  });
+}
+
+function printHyphen(cars) {
+  cars.forEach((car) => {
+    Console.print(`${car.name} : ${"-".repeat(car.position)}`);
   });
 }
 
